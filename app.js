@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes");
 const { sequelize } = require("./models");
-const { swaggerUi, specs } = require("./swagger");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -31,7 +30,6 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors(corsOption));
 app.use(cookieParser());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use("/", routes)
 app.get("/", (req, res, next) => {

@@ -2,6 +2,9 @@
   "name": "plz-server",
   "version": "1.0.0",
   "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "repository": "git@github.com-me:doksan-study/plz-server.git",
   "author": "pmg7522 <pmg752290@gmail.com>",
   "license": "MIT",
