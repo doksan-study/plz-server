@@ -12,7 +12,7 @@ const {
 } = require("../controllers");
 
 router.post("/", tryCatch(productCreate));
-router.patch("/", tryCatch(productEdit));
+router.put("/", tryCatch(productEdit));
 router.get("/list", tryCatch(productList));
 router.get("/:productId", tryCatch(productDetail));
 router.delete("/:productId", tryCatch(productDelete));

@@ -1,4 +1,4 @@
-const { unknownError } = require("../middlewares/errorcode")
+const { unknownError } = require("../error/errorcode")
 
 tryCatch = (fn) => {
   return (async (req, res, next) => {

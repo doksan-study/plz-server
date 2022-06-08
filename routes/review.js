@@ -12,7 +12,7 @@ const {
 } = require("../controllers");
 
 router.post("/", tryCatch(reviewWrite));
-router.patch("/", tryCatch(reviewEdit));
+router.put("/", tryCatch(reviewEdit));
 router.get("/list", tryCatch(reviewList));
 router.get("/:reviewId", tryCatch(reviewDetail));
 router.delete("/:reviewId", tryCatch(reviewDelete));

@@ -25,7 +25,7 @@ sequelize.sync()
     console.log("db 연결 실패", err);
   })
 
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors(corsOption));
@@ -33,7 +33,7 @@ app.use(cookieParser());
 
 app.use("/", routes)
 app.get("/", (req, res, next) => {
-  return res.status(200).send({ message: "Welcome" });
+  return res.status(200).send({ message: "Welcome Plz" });
 });
 
 app.use((req, res, next) => {
