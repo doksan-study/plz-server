@@ -3,11 +3,11 @@ const { Product } = require("../../models")
 module.exports = async (req, res, next) => {
   const { page, limit } = req.query;
 
-  const offest = (parseInt(page) - 1) * parseInt(limit);
+  const offset = (parseInt(page) - 1) * parseInt(limit);
 
   const productData = await Product.findAndCountAll({
     offset,
-    limit,
+    limit: parseInt(limit),
     where: {
       status: 0
     },
@@ -17,6 +17,7 @@ module.exports = async (req, res, next) => {
 
   return res.status(200).send({
     message: "상품 목록 요청에 성공하였습니다.",
-    data: productData
+    data: productData.rows,
+    count: productData.count
   })
 }

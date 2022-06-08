@@ -10,7 +10,8 @@ module.exports = async (req, res, next) => {
       where: {
         id: productId
       }
-    })
+    }
+  )
 
   return res.status(201).send({
     message: "상품이 삭제되었습니다.",

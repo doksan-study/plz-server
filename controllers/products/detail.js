@@ -1,4 +1,5 @@
 const { Product } = require("../../models");
+
 const {
   deleteData
 } = require("../../error/errorcode");

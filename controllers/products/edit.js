@@ -3,7 +3,7 @@ const { Product } = require("../../models")
 module.exports = async (req, res, next) => {
   const { id, name, thumbnail, description, cost } = req.body;
 
-  const productData = await Product.update({
+  await Product.update({
     name,
     thumbnail,
     description,
@@ -12,9 +12,17 @@ module.exports = async (req, res, next) => {
     {
       where: {
         id,
-        status: 0,
       }
-    })
+    }
+  )
+
+  const productData = await Product.findOne({
+    where: {
+      id
+    },
+    attributes: ["id", "name", "thumbnail", "description", "cost", "status", "createdAt"],
+    raw: true,
+  })
 
   return res.status(200).send({
     message: "상품 수정이 완료되었습니다.",
