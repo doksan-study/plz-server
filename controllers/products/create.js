@@ -1,7 +1,8 @@
 const { Product } = require("../../models")
 
 module.exports = async (req, res, next) => {
-  const { name, thumbnail, description, cost } = req.body;
+  const { name, description, cost } = req.body;
+  const thumbnail = req.file.path;
 
   const productData = await Product.create({
     name,

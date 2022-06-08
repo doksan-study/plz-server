@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const router = Router();
 
-const tryCatch = require("../middlewares/trycatch");
+const multer = require('multer');
+const upload = multer({ dest: "files/" });
 
+const tryCatch = require("../middlewares/trycatch");
 const {
   productCreate,
   productEdit,
@@ -11,8 +13,8 @@ const {
   productDelete,
 } = require("../controllers");
 
-router.post("/", tryCatch(productCreate));
-router.put("/", tryCatch(productEdit));
+router.post("/", upload.single("thumbnail"), tryCatch(productCreate));
+router.put("/", upload.single("thumbnail"), tryCatch(productEdit));
 router.get("/list", tryCatch(productList));
 router.get("/:productId", tryCatch(productDetail));
 router.delete("/:productId", tryCatch(productDelete));
