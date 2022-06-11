@@ -10,10 +10,10 @@ module.exports = async (req, res, next) => {
     description,
     cost,
     status: 0
-  })
+  });
 
   return res.status(201).send({
     message: "상품 등록이 완료되었습니다.",
     data: productData
   })
-}
+};
