@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes");
 const { sequelize } = require("./models");
+const { swaggerUi, specs } = require("./swagger");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -32,6 +33,8 @@ app.use(cors(corsOption));
 app.use(cookieParser());
 
 app.use("/", routes)
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
 app.get("/", (req, res, next) => {
   return res.status(200).send({ message: "Welcome Plz" });
 });

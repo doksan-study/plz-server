@@ -1,7 +1,27 @@
 const { Review } = require("../../models")
 
+/**
+ * @swagger
+ *  /review:
+ *    put:
+ *      tags:
+ *      - review
+ *      summary: 리뷰 수정
+ *      description: 리뷰 수정
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: body
+ *          name: Body
+ *          required: true
+ *          description :
+ *          schema:
+ *              $ref: "#/definitions/reviewEdit"
+ */
 module.exports = async (req, res, next) => {
-  const { id, name, thumbnail, description, cost } = req.body;
+  const { reviewId, title, content } = req.body;
 
   await Review.update({
     title,
@@ -9,14 +29,14 @@ module.exports = async (req, res, next) => {
   },
     {
       where: {
-        id,
+        id: reviewId,
       }
     }
   )
 
   const reviewData = await Review.findOne({
     where: {
-      id
+      id: reviewId
     },
     attributes: ["id", "title", "content", "status", "createdAt", "productId"],
     raw: true,

@@ -4,6 +4,24 @@ const {
   deleteData
 } = require("../../error/errorcode");
 
+/**
+ * @swagger
+ *  /product/:productId:
+ *    get:
+ *      tags:
+ *      - product
+ *      summary: 상품 상세정보
+ *      description: 상품 상세정보
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: params
+ *          name: productId
+ *          required: true
+ *          description : 상품 id
+ */
 module.exports = async (req, res, next) => {
   const { productId } = req.params;
 

@@ -1,0 +1,59 @@
+definitions:
+  # 상품
+  productRegister:
+    type: "Object"
+    properties:
+      name:
+        type: "String"
+        example: "상품 이름"
+      description:
+        type: "String"
+        example: "상품 상세 내용"
+      cost:
+        type: "Number"
+        example: "상품 가격"
+      thumbnail:
+        type: "String"
+        example: "썸네일 이미지"
+  productEdit:
+    type: "Object"
+    properties:
+      productId:
+        type: "Number"
+        example: "상품 id"
+      name:
+        type: "String"
+        example: "상품 이름"
+      description:
+        type: "String"
+        example: "상품 상세 내용"
+      cost:
+        type: "Number"
+        example: "상품 가격"
+      thumbnail:
+        type: "String"
+        example: "썸네일 이미지"
+  reviewWrite:
+    type: "Object"
+    properties:
+      productId:
+        type: "Number"
+        example: "상품 id"
+      title:
+        type: "String"
+        example: "리뷰 제목"
+      content:
+        type: "String"
+        example: "리뷰 내용"
+  reviewEdit:
+    type: "Object"
+    properties:
+      reviewId:
+        type: "Number"
+        example: "리뷰 id"
+      title:
+        type: "String"
+        example: "리뷰 제목"
+      content:
+        type: "String"
+        example: "리뷰 내용"

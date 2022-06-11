@@ -1,5 +1,27 @@
 const { Review } = require("../../models")
 
+/**
+ * @swagger
+ *  /review/list:
+ *    get:
+ *      tags:
+ *      - review
+ *      summary: 리뷰 목록
+ *      description: 리뷰 목록
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: query
+ *          name: page
+ *          description : 요청 할 페이지 번호
+ *          type: Number
+ *        - in: query
+ *          name: limit
+ *          description : 요청 할 페이지의 데이터 수
+ *          type: Number
+ */
 module.exports = async (req, res, next) => {
   const { productId, page, limit } = req.query;
 

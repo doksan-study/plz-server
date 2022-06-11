@@ -1,5 +1,25 @@
 const { Product } = require("../../models")
 
+/**
+ * @swagger
+ *  /product:
+ *    post:
+ *      tags:
+ *      - product
+ *      summary: 상품 등록
+ *      description: 상품 등록
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: body
+ *          name: Body
+ *          required: true
+ *          description :
+ *          schema:
+ *              $ref: "#/definitions/productRegister"
+ */
 module.exports = async (req, res, next) => {
   const { name, description, cost } = req.body;
   const thumbnail = req.file.path;

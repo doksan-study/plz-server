@@ -1,5 +1,27 @@
 const { Product } = require("../../models")
 
+/**
+ * @swagger
+ *  /product/list:
+ *    get:
+ *      tags:
+ *      - product
+ *      summary: 상품 목록
+ *      description: 상품 목록
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: query
+ *          name: page
+ *          description : 요청 할 페이지 번호
+ *          type: Number
+ *        - in: query
+ *          name: limit
+ *          description : 요청 할 페이지의 데이터 수
+ *          type: Number
+ */
 module.exports = async (req, res, next) => {
   const { page, limit } = req.query;
 

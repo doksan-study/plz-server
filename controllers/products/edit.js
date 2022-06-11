@@ -1,8 +1,28 @@
 const { Product } = require("../../models")
 
+/**
+ * @swagger
+ *  /product:
+ *    put:
+ *      tags:
+ *      - product
+ *      summary: 상품 수정
+ *      description: 상품 수정
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: body
+ *          name: Body
+ *          required: true
+ *          description :
+ *          schema:
+ *              $ref: "#/definitions/productEdit"
+ */
 module.exports = async (req, res, next) => {
-  const { id, name, description, cost } = req.body;
-  const thumbnail = req.file.path;
+  const { productId, name, description, cost } = req.body;
+  const thumbnail = req?.file?.path;
 
   await Product.update({
     name,
@@ -12,14 +32,14 @@ module.exports = async (req, res, next) => {
   },
     {
       where: {
-        id,
+        id: productId,
       }
     }
   )
 
   const productData = await Product.findOne({
     where: {
-      id
+      id: productId
     },
     attributes: ["id", "name", "thumbnail", "description", "cost", "status", "createdAt"],
     raw: true,
