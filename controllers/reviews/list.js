@@ -13,7 +13,7 @@ const { Review } = require("../../models")
  *      produces:
  *      - application/json
  *      parameters:
-  *        - in: query
+ *        - in: query
  *          name: productId
  *          description : 상품 id
  *          type: Number
