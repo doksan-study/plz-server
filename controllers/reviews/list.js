@@ -1,4 +1,6 @@
-const { Review } = require("../../models")
+const { Review } = require("../../models");
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 /**
  * @swagger
@@ -36,7 +38,7 @@ module.exports = async (req, res, next) => {
     limit: parseInt(limit),
     where: {
       status: 0,
-      productId
+      productId,
     },
     attributes: ["id", "title", "content", "status", "createdAt", "productId"],
     raw: true,
