@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 const {
   Model
-} = require('sequelize');
+} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
     static associate(models) {
-      this.belongsTo(models.Product);
+      this.belongsTo(models.product);
     }
   }
   Review.init({
@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Review',
+    underscored: true,
+    freezeTableName: true,
+    modelName: "review",
+    tableName: "Review"
   });
   return Review;
 };

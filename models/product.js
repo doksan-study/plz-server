@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 const {
   Model
-} = require('sequelize');
+} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
-      this.hasMany(models.Review, { foreignKey: "productId" });
+      this.hasMany(models.review, { foreignKey: "productId" });
     }
   }
   Product.init({
@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Product',
+    underscored: true,
+    freezeTableName: true,
+    modelName: "product",
+    tableName: "Product"
   });
   return Product;
 };

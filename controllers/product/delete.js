@@ -1,4 +1,4 @@
-const { Product } = require("../../models")
+const { product } = require("../../models")
 
 /**
  * @swagger

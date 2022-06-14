@@ -1,4 +1,4 @@
-const { Review } = require("../../models");
+const { review } = require("../../models");
 const sequelize = require("sequelize");
 const Op = sequelize.Op;
 

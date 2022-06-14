@@ -1,4 +1,4 @@
-const { Review } = require("../../models")
+const { review } = require("../../models")
 
 /**
  * @swagger
