@@ -19,6 +19,7 @@ const options = {
   apis: [
     "./controllers/product/*.js",
     "./controllers/review/*.js",
+    "./controllers/search/*.js",
     "./swagger/*"
   ]
 };
