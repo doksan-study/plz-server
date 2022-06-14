@@ -23,7 +23,7 @@ const { review } = require("../../models")
 module.exports = async (req, res, next) => {
   const { reviewId, title, content } = req.body;
 
-  await Review.update({
+  await review.update({
     title,
     content
   },

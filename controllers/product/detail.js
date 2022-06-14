@@ -1,7 +1,8 @@
 const { product } = require("../../models");
 
 const {
-  deleteData
+  notFoundProduct,
+  deleteProduct
 } = require("../../error/errorcode");
 
 /**
@@ -25,7 +26,7 @@ const {
 module.exports = async (req, res, next) => {
   const { productId } = req.params;
 
-  const productData = await Product.findOne({
+  const productData = await product.findOne({
     where: {
       id: productId
     },
@@ -33,8 +34,11 @@ module.exports = async (req, res, next) => {
     raw: true,
   })
 
-  if (productData.status === 99) {
-    return next(deleteData);
+  if (!productData) {
+    return next(notFoundProduct);
+  }
+  else if (productData.status === 99) {
+    return next(deleteProduct);
   } else {
     return res.status(200).send({
       message: "상품 상세정보 요청에 성공하였습니다.",

@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
   const { name, description, cost } = req.body;
   const thumbnail = req.file.path;
 
-  const productData = await Product.create({
+  const productData = await product.create({
     name,
     thumbnail,
     description,

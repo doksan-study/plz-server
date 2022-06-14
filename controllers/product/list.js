@@ -35,7 +35,7 @@ module.exports = async (req, res, next) => {
 
   let productData;
   if (word) {
-    productData = await Product.findAndCountAll({
+    productData = await product.findAndCountAll({
       offset,
       limit: parseInt(limit),
       where: {
@@ -57,7 +57,7 @@ module.exports = async (req, res, next) => {
       raw: true,
     })
   } else {
-    productData = await Product.findAndCountAll({
+    productData = await product.findAndCountAll({
       offset,
       limit: parseInt(limit),
       where: {

@@ -21,7 +21,7 @@ const { product } = require("../../models")
 module.exports = async (req, res, next) => {
   const { productId } = req.params;
 
-  await Product.update({
+  await product.update({
     status: 99,
   },
     {

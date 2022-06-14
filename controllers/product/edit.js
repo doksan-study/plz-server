@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
   const { productId, name, description, cost } = req.body;
   const thumbnail = req?.file?.path;
 
-  await Product.update({
+  await product.update({
     name,
     thumbnail,
     description,
@@ -37,7 +37,7 @@ module.exports = async (req, res, next) => {
     }
   )
 
-  const productData = await Product.findOne({
+  const productData = await product.findOne({
     where: {
       id: productId
     },

@@ -23,7 +23,7 @@ const { review } = require("../../models")
 module.exports = async (req, res, next) => {
   const { productId, title, content } = req.body;
 
-  const reviewData = await Review.create({
+  const reviewData = await review.create({
     title,
     content,
     status: 0,

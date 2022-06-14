@@ -1,9 +1,27 @@
 module.exports = {
-  // 400 Error
-  deleteData: {
-    status: 400,
-    message: "삭제된 데이터에 대한 요청입니다.",
-    errorCode: "PLZ400100"
+  // 404 Error
+  deleteProduct: {
+    status: 404,
+    message: "삭제된 상품입니다.",
+    errorCode: "PLZ404100"
+  },
+
+  notFoundProduct: {
+    status: 404,
+    message: "존재하지 않는 상품입니다.",
+    errorCode: "PLZ404101"
+  },
+
+  deleteReview: {
+    status: 404,
+    message: "삭제된 리뷰입니다.",
+    errorCode: "PLZ404200"
+  },
+
+  notFoundReview: {
+    status: 404,
+    message: "존재하지 않는 리뷰입니다.",
+    errorCode: "PLZ404201"
   },
 
   unknownError: {

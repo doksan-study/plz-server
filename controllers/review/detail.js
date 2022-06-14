@@ -1,7 +1,8 @@
 const { review } = require("../../models");
 
 const {
-  deleteData
+  deleteReview,
+  notFoundReview
 } = require("../../error/errorcode");
 
 /**
@@ -25,7 +26,7 @@ const {
 module.exports = async (req, res, next) => {
   const { reviewId } = req.params;
 
-  const reviewData = await Review.findOne({
+  const reviewData = await review.findOne({
     where: {
       id: reviewId
     },
@@ -33,8 +34,11 @@ module.exports = async (req, res, next) => {
     raw: true,
   })
 
-  if (reviewData.status === 99) {
-    return next(deleteData);
+  if (!reviewData) {
+    return next(notFoundReview);
+  }
+  else if (reviewData.status === 99) {
+    return next(deleteReview);
   } else {
     return res.status(200).send({
       message: "리뷰 상세정보 요청에 성공하였습니다.",

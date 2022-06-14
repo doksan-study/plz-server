@@ -33,7 +33,7 @@ module.exports = async (req, res, next) => {
 
   const offset = (parseInt(page) - 1) * parseInt(limit);
 
-  const reviewData = await Review.findAndCountAll({
+  const reviewData = await review.findAndCountAll({
     offset,
     limit: parseInt(limit),
     where: {
