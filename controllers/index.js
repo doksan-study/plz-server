@@ -12,4 +12,7 @@ module.exports = {
   reviewList: require("./review/list"),
   reviewDetail: require("./review/detail"),
   reviewDelete: require("./review/delete"),
+
+  // 검색 컨트롤러
+  searchProduct: require("./search/product"),
 }

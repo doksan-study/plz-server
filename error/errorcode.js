@@ -24,6 +24,12 @@ module.exports = {
     errorCode: "PLZ404201"
   },
 
+  notFoundSearchData: {
+    status: 404,
+    message: "검색내역이 존재하지 않습니다.",
+    errorCode: "PLZ404300"
+  },
+
   unknownError: {
     status: 500,
     message: "오류가 발생하였습니다.",
