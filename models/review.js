@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
     static associate(models) {
       this.belongsTo(models.product);
+      this.belongsTo(models.user);
     }
   }
   Review.init({

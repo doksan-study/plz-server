@@ -38,11 +38,11 @@ module.exports = async (req, res, next) => {
     },
     attributes: ["id", "name", "thumbnail", "description", "cost", "status", "createdAt"],
     raw: true,
-  })
+  });
 
   return res.status(200).send({
     message: "상품 목록 요청에 성공하였습니다.",
     data: productData.rows,
     count: productData.count
-  })
+  });
 }
