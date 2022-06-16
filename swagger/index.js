@@ -20,6 +20,7 @@ const options = {
     "./controllers/product/*.js",
     "./controllers/review/*.js",
     "./controllers/search/*.js",
+    "./controllers/user/*.js",
     "./swagger/*"
   ]
 };
