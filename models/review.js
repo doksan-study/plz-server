@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.INTEGER
   }, {
     sequelize,
-    underscored: true,
+    underscored: false,
     freezeTableName: true,
     modelName: "review",
     tableName: "Review"

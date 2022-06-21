@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 
 const multer = require('multer');
-const upload = multer({ dest: "files/" });
+const { upload } = require("../config/s3");
 
 const tryCatch = require("../middlewares/trycatch");
 const {
