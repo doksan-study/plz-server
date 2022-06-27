@@ -72,7 +72,7 @@ module.exports = async (req, res, next) => {
     })
   }
 
-  if (!productData.length) {
+  if (!productData.count) {
     return next(notFoundSearchData);
   } else {
     return res.status(200).send({
