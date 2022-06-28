@@ -1,4 +1,4 @@
-const { product } = require("../../models")
+import { product } from "../../models/product.js";
 
 /**
  * @swagger
@@ -18,7 +18,7 @@ const { product } = require("../../models")
  *          required: true
  *          description : 상품 id
  */
-module.exports = async (req, res, next) => {
+export const productDelete = async (req, res, next) => {
   const { productId } = req.params;
 
   await product.update({

@@ -1,4 +1,4 @@
-const { review } = require("../../models")
+import { review } from "../../models/review.js";
 
 /**
  * @swagger
@@ -20,7 +20,7 @@ const { review } = require("../../models")
  *          schema:
  *              $ref: "#/definitions/reviewEdit"
  */
-module.exports = async (req, res, next) => {
+export const reviewEdit = async (req, res, next) => {
   const { reviewId, title, content } = req.body;
 
   await review.update({

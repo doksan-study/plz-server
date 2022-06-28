@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import tryCatch from "../middlewares/trycatch";
+import { tryCatch } from "../middlewares/trycatch.js";
 
 import {
   reviewWrite,
@@ -8,7 +8,7 @@ import {
   reviewList,
   reviewDetail,
   reviewDelete,
-} from "../controllers";
+} from "../controllers/index.js";
 
 export const reviewRouter = Router();
 

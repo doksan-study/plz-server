@@ -3,14 +3,14 @@ import { Router } from "express";
 import multer from 'multer';
 import { upload } from "../config/s3.js";
 
-import tryCatch from "../middlewares/trycatch.js";
+import { tryCatch } from "../middlewares/trycatch.js";
 import {
   productCreate,
   productEdit,
   productList,
   productDetail,
   productDelete,
-} from "../controllers";
+} from "../controllers/index.js";
 
 export const productRouter = Router();
 

@@ -1,9 +1,9 @@
-const { review } = require("../../models");
+import { review } from "../../models/review.js";
 
-const {
+import {
   deleteReview,
   notFoundReview
-} = require("../../error/errorcode");
+} from "../../error/errorcode.js";
 
 /**
  * @swagger
@@ -23,7 +23,7 @@ const {
  *          required: true
  *          description : 리뷰 id
  */
-module.exports = async (req, res, next) => {
+export const reviewDetail = async (req, res, next) => {
   const { reviewId } = req.params;
 
   const reviewData = await review.findOne({
