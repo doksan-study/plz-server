@@ -3,8 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import { sequelize } from "./models/index.js";
 import { router } from "./routes/index.js";
-import db from "./models/index.js";
 import { swaggerUi, specs } from "./swagger/index.js";
 
 import dotenv from "dotenv";

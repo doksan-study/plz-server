@@ -11,10 +11,9 @@ const basename = path.basename(__filename);
 
 import { config } from "../config/config.js";
 
-const env = "development";
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development);
 
 fs
   .readdirSync(__dirname)
@@ -22,7 +21,7 @@ fs
     return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    import model from (path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
@@ -35,4 +34,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+export { db, sequelize };
