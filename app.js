@@ -1,13 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const routes = require("./routes");
-const { sequelize } = require("./models");
-const { swaggerUi, specs } = require("./swagger");
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import routes from "./routes";
+import { sequelize } from "./models";
+import { swaggerUi, specs } from "./swagger";
 
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
