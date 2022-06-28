@@ -1,20 +1,19 @@
-const { Router } = require("express");
-const router = Router();
+import { Router } from "express";
 
-const tryCatch = require("../middlewares/trycatch");
+import tryCatch from "../middlewares/trycatch";
 
-const {
+import {
   reviewWrite,
   reviewEdit,
   reviewList,
   reviewDetail,
   reviewDelete,
-} = require("../controllers");
+} from "../controllers";
 
-router.post("/", tryCatch(reviewWrite));
-router.put("/", tryCatch(reviewEdit));
-router.get("/list", tryCatch(reviewList));
-router.get("/:reviewId", tryCatch(reviewDetail));
-router.delete("/:reviewId", tryCatch(reviewDelete));
+export const reviewRouter = Router();
 
-module.exports = router;
+reviewRouter.post("/", tryCatch(reviewWrite));
+reviewRouter.put("/", tryCatch(reviewEdit));
+reviewRouter.get("/list", tryCatch(reviewList));
+reviewRouter.get("/:reviewId", tryCatch(reviewDetail));
+reviewRouter.delete("/:reviewId", tryCatch(reviewDelete));

@@ -1,12 +1,10 @@
-const { Router } = require("express");
-const router = Router();
+import { Router } from "express";
+import product from "./product.js";
+import review from "./review.js";
+import search from "./search.js";
 
-const product = require("./product");
-const review = require("./review");
-const search = require("./search");
+export const router = Router();
 
 router.use("/product", product);
 router.use("/review", review);
 router.use("/search", search);
-
-module.exports = router;

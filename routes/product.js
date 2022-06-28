@@ -1,22 +1,21 @@
-const { Router } = require("express");
-const router = Router();
+import { Router } from "express";
 
-const multer = require('multer');
-const { upload } = require("../config/s3");
+import multer from 'multer';
+import { upload } from "../config/s3.js";
 
-const tryCatch = require("../middlewares/trycatch");
-const {
+import tryCatch from "../middlewares/trycatch.js";
+import {
   productCreate,
   productEdit,
   productList,
   productDetail,
   productDelete,
-} = require("../controllers");
+} from "../controllers";
 
-router.post("/", upload.single("thumbnail"), tryCatch(productCreate));
-router.put("/", upload.single("thumbnail"), tryCatch(productEdit));
-router.get("/list", tryCatch(productList));
-router.get("/:productId", tryCatch(productDetail));
-router.delete("/:productId", tryCatch(productDelete));
+export const productRouter = Router();
 
-module.exports = router;
+productRouter.post("/", upload.single("thumbnail"), tryCatch(productCreate));
+productRouter.put("/", upload.single("thumbnail"), tryCatch(productEdit));
+productRouter.get("/list", tryCatch(productList));
+productRouter.get("/:productId", tryCatch(productDetail));
+productRouter.delete("/:productId", tryCatch(productDelete));
