@@ -4,6 +4,9 @@ import fs from "fs";
 import path from "path";
 import Sequelize from "sequelize";
 import { fileURLToPath } from "url";
+import { product } from "../models/product.js"
+import { review } from "../models/review.js"
+import { user } from "../models/user.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,10 +23,6 @@ fs
   .filter(file => {
     return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
   })
-  .forEach(file => {
-    import model from (path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -31,6 +30,9 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+db.product = product;
+db.review = review;
+db.user = user;
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
