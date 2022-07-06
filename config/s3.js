@@ -10,7 +10,7 @@ const s3 = new aws.S3({
   region: process.env.S3_REGION
 })
 
-export const upload = multer({
+const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket: process.env.S3_BUCKET,
@@ -21,4 +21,6 @@ export const upload = multer({
       // cb(null, `test/${Date.now()}_${file.originalname}`) // 폴더에 저장
     }
   }),
-});
+})
+
+exports.upload = multer(upload);
