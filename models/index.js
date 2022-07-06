@@ -1,28 +1,25 @@
-"use strict";
+'use strict';
 
-import fs from "fs";
-import path from "path";
-import Sequelize from "sequelize";
-import { fileURLToPath } from "url";
-import { product } from "../models/product.js"
-import { review } from "../models/review.js"
-import { user } from "../models/user.js"
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-
-import { config } from "../config/config.js";
-
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config')[env];
 const db = {};
 
-const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development);
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 
 fs
   .readdirSync(__dirname)
   .filter(file => {
-    return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -30,10 +27,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-db.product = product;
-db.review = review;
-db.user = user;
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export { db, sequelize };
+module.exports = db;

@@ -1,9 +1,9 @@
-import { product } from "../../models/product.js";
+const { product } = require("../../models");
 
-import {
+const {
   notFoundProduct,
   deleteProduct
-} from "../../error/errorcode.js";
+} = require("../../error/errorcode");
 
 /**
  * @swagger
@@ -23,7 +23,7 @@ import {
  *          required: true
  *          description : 상품 id
  */
-export const productDetail = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { productId } = req.params;
 
   const productData = await product.findOne({

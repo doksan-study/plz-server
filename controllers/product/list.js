@@ -1,5 +1,6 @@
-import { product } from "../../models/product.js";
-import { Op } from "sequelize";
+const { product } = require("../../models")
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 /**
  * @swagger
@@ -23,7 +24,7 @@ import { Op } from "sequelize";
  *          description : 요청 할 페이지의 데이터 수
  *          type: Number
  */
-export const productList = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { page, limit, word } = req.query;
 
   const offset = (parseInt(page) - 1) * parseInt(limit);

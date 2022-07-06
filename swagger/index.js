@@ -1,5 +1,5 @@
-import swaggerUi from "swagger-ui-express";
-import swaggereJsdoc from "swagger-jsdoc";
+const swaggerUi = require("swagger-ui-express");
+const swaggereJsdoc = require("swagger-jsdoc");
 
 const serverUrl = `http://${process.env.SERVER_IP}:${process.env.SERVER_PORT}`;
 
@@ -27,7 +27,7 @@ const options = {
 
 const specs = swaggereJsdoc(options);
 
-export {
+module.exports = {
   swaggerUi,
   specs
 };

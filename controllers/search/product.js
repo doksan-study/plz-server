@@ -1,9 +1,10 @@
-import { product } from "../../models/product.js";
-import { Op } from "sequelize";
+const { product } = require("../../models")
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
-import {
+const {
   notFoundSearchData
-} from "../../error/errorcode.js";
+} = require("../../error/errorcode");
 
 /**
  * @swagger
@@ -31,7 +32,7 @@ import {
  *          description : 검색 할 키워드
  *          type: Number
  */
-export const searchProduct = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { page, limit, word } = req.query;
 
   const offset = (parseInt(page) - 1) * parseInt(limit);

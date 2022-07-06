@@ -1,4 +1,4 @@
-import { review } from "../../models/review.js";
+const { review } = require("../../models")
 
 /**
  * @swagger
@@ -18,7 +18,7 @@ import { review } from "../../models/review.js";
  *          required: true
  *          description : 리뷰 id
  */
-export const reviewDelete = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { reviewId } = req.params;
 
   await review.update({
@@ -31,7 +31,7 @@ export const reviewDelete = async (req, res, next) => {
     }
   )
 
-  return res.status(200).send({
+  return res.status(201).send({
     message: "리뷰가 삭제되었습니다.",
     data: null
   })

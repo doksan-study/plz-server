@@ -1,4 +1,4 @@
-import { product } from "../../models/product.js";
+const { product } = require("../../models")
 
 /**
  * @swagger
@@ -20,7 +20,7 @@ import { product } from "../../models/product.js";
  *          schema:
  *              $ref: "#/definitions/productRegister"
  */
-export const productCreate = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { name, description, cost } = req.body;
   const thumbnail = req.file.location;
 

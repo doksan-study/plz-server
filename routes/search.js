@@ -1,11 +1,12 @@
-import { Router } from "express";
+const { Router } = require("express");
+const router = Router();
 
-import { tryCatch } from "../middlewares/trycatch.js";
+const tryCatch = require("../middlewares/trycatch");
 
-import {
+const {
   searchProduct,
-} from "../controllers/index.js";
+} = require("../controllers");
 
-export const searchRouter = Router();
+router.get("/product", tryCatch(searchProduct));
 
-searchRouter.get("/product", tryCatch(searchProduct));
+module.exports = router;

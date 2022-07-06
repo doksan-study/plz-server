@@ -1,13 +1,13 @@
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import bodyParser from "body-parser";
-import morgan from "morgan";
-import { sequelize } from "./models/index.js";
-import { router } from "./routes/index.js";
-import { swaggerUi, specs } from "./swagger/index.js";
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const routes = require("./routes");
+const { sequelize } = require("./models");
+const { swaggerUi, specs } = require("./swagger");
 
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(morgan("dev"));
 app.use(cors(corsOption));
 app.use(cookieParser());
 
-app.use("/", router)
+app.use("/", routes)
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.get("/", (req, res, next) => {
@@ -56,4 +56,4 @@ const server = app.listen(port, () => {
   console.log(`서버가 ${port}로 실행 중입니다.`);
 });
 
-export default server;
+module.exports = server;

@@ -1,4 +1,4 @@
-import { review } from "../../models/review.js";
+const { review } = require("../../models")
 
 /**
  * @swagger
@@ -20,7 +20,7 @@ import { review } from "../../models/review.js";
  *          schema:
  *              $ref: "#/definitions/reviewWrite"
  */
-export const reviewWrite = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { productId, title, content } = req.body;
 
   const reviewData = await review.create({
