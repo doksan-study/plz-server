@@ -3,7 +3,7 @@ const crypto = require("crypto-js");
 
 /**
  * @swagger
- *  /user:
+ *  /user/signup:
  *    post:
  *      tags:
  *      - user

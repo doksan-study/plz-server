@@ -15,4 +15,7 @@ module.exports = {
 
   // 검색 컨트롤러
   searchProduct: require("./search/product"),
+
+  // 유저 컨트롤러
+  userSignUp: require("./user/signup"),
 }

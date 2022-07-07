@@ -3,7 +3,7 @@ const crypto = require("crypto-js");
 
 /**
  * @swagger
- *  /user:
+ *  /user/login:
  *    post:
  *      tags:
  *      - user
@@ -22,20 +22,19 @@ const crypto = require("crypto-js");
  *              $ref: "#/definitions/userLogIn"
  */
 module.exports = async (req, res, next) => {
-  const { username, name, password, authLevel } = req.body;
+  const { username, password, authLevel } = req.body;
 
   const hash = crypto.SHA256("password", process.env.SALT).toString();
 
-  const userData = await user.create({
+  const userData = await user.findOne({
     username,
-    name,
     password: hash,
     authLevel,
     status: 0,
   });
 
-  return res.status(201).send({
-    message: "회원가입이 완료되었습니다.",
+  return res.status(200).send({
+    message: "로그인에 성공하였습니다.",
     data: userData
   });
 }
