@@ -18,4 +18,5 @@ module.exports = {
 
   // 유저 컨트롤러
   userSignUp: require("./user/signup"),
+  userSignIn: require("./user/signin"),
 }
